@@ -1,0 +1,71 @@
+---
+title: "Programming Assignment Week 4"
+output: html_notebook
+---
+
+```{r}
+source("best.R")
+source("rankhospital.R")
+source("rankall.R")
+```
+
+```{r}
+outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+head(outcome)
+```
+
+
+```{r}
+outcome[, 11] <- as.numeric(outcome[, 11])
+hist(outcome[, 11])
+```
+```{r}
+best("TX", "heart attack")
+```
+```{r}
+best("TX", "heart failure")
+```
+
+
+```{r}
+best("MD", "heart attack")
+```
+
+```{r}
+best("MD", "pneumonia")
+```
+
+```{r}
+best("BB", "heart attack")
+```
+
+```{r}
+best("NY", "hert attack")
+```
+
+```{r}
+rankhospital("TX", "heart failure", 4)
+```
+
+```{r}
+rankhospital("MD", "heart attack", "worst")
+```
+
+```{r}
+rankhospital("MN", "heart attack", 5000)
+```
+
+```{r}
+head(rankall("heart attack", 20), 10)
+```
+
+
+```{r}
+tail(rankall("pneumonia", "worst"), 3)
+```
+
+
+```{r}
+tail(rankall("heart failure"), 10)
+```
+
